@@ -11,3 +11,15 @@ jobs:
     steps:
       - name: Hello World
         run: echo "Hello World"
+
+  date:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Date
+        run: date
+
+  list:
+    runs-on: ubuntu-latest
+    steps:
+      - name: List
+        run: ls -la
