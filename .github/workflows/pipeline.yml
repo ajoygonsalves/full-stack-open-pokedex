@@ -1,0 +1,30 @@
+name: Depolyment Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+    workflow_dispatch:
+
+jobs:
+  simple-deployment-pipeline:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Lint
+        run: pnpm eslint
+
+      - name: Test
+        run: pnpm test
+
+      - name: Build
+        run: pnpm deploy
