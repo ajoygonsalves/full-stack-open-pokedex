@@ -30,7 +30,6 @@ jobs:
         run: pnpm install
 
       - name: Lint
-        if: github.event_name == 'push'
         run: pnpm eslint
 
       - name: Test
