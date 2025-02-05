@@ -16,22 +16,23 @@ jobs:
 
       - name: Discord notification - Success
         if: success()
-        uses: rjstone/discord-webhook-notify@v1
+        uses: sarisia/actions-status-discord@v1
         with:
-          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
-          severity: info
-          description: "🎉 Successfully deployed new version"
-          details: "Commit: ${{ github.sha }}"
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          title: "🎉 Deployment Successful"
+          description: "Successfully deployed new version\nCommit: ${{ github.sha }}"
+          color: 0x2ecc71
 
       - name: Discord notification - Failure
         if: failure()
-        uses: rjstone/discord-webhook-notify@v1
+        uses: sarisia/actions-status-discord@v1
         with:
-          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
-          severity: error
-          description: "❌ Build failed!"
-          details: |
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          title: "❌ Build Failed"
+          description: |
             Commit: ${{ github.sha }}
+            Author: ${{ github.actor }}
+          color: 0xe74c3c
 
   date:
     runs-on: ubuntu-latest
