@@ -29,8 +29,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-        if: github.event_name == 'push'
       - name: Lint
+        if: github.event_name == 'push'
         run: pnpm eslint
 
       - name: Test
